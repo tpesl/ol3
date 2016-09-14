@@ -2,7 +2,7 @@ goog.provide('ol.render.canvas.LineStringReplay');
 
 goog.require('ol');
 goog.require('ol.array');
-goog.require('ol.colorlike');
+goog.require('ol.color');
 goog.require('ol.extent');
 goog.require('ol.render.canvas');
 goog.require('ol.render.canvas.Instruction');
@@ -30,14 +30,14 @@ ol.render.canvas.LineStringReplay = function(tolerance, maxExtent, resolution, o
 
   /**
    * @private
-   * @type {{currentStrokeStyle: (ol.ColorLike|undefined),
+   * @type {{currentStrokeStyle: (string|undefined),
    *         currentLineCap: (string|undefined),
    *         currentLineDash: Array.<number>,
    *         currentLineJoin: (string|undefined),
    *         currentLineWidth: (number|undefined),
    *         currentMiterLimit: (number|undefined),
    *         lastStroke: number,
-   *         strokeStyle: (ol.ColorLike|undefined),
+   *         strokeStyle: (string|undefined),
    *         lineCap: (string|undefined),
    *         lineDash: Array.<number>,
    *         lineJoin: (string|undefined),
@@ -223,7 +223,7 @@ ol.render.canvas.LineStringReplay.prototype.setFillStrokeStyle = function(fillSt
   ol.DEBUG && console.assert(!fillStyle, 'fillStyle should be null');
   ol.DEBUG && console.assert(strokeStyle, 'strokeStyle should not be null');
   var strokeStyleColor = strokeStyle.getColor();
-  this.state_.strokeStyle = ol.colorlike.asColorLike(strokeStyleColor ?
+  this.state_.strokeStyle = ol.color.asString(strokeStyleColor ?
       strokeStyleColor : ol.render.canvas.defaultStrokeStyle);
   var strokeStyleLineCap = strokeStyle.getLineCap();
   this.state_.lineCap = strokeStyleLineCap !== undefined ?

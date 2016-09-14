@@ -1,6 +1,7 @@
 goog.provide('ol.render.canvas.TextReplay');
 
 goog.require('ol');
+goog.require('ol.color');
 goog.require('ol.colorlike');
 goog.require('ol.render.canvas');
 goog.require('ol.render.canvas.Instruction');
@@ -266,7 +267,7 @@ ol.render.canvas.TextReplay.prototype.setTextStyle = function(textStyle) {
           textStrokeStyleWidth : ol.render.canvas.defaultLineWidth;
       var miterLimit = textStrokeStyleMiterLimit !== undefined ?
           textStrokeStyleMiterLimit : ol.render.canvas.defaultMiterLimit;
-      var strokeStyle = ol.colorlike.asColorLike(textStrokeStyleColor ?
+      var strokeStyle = ol.color.asString(textStrokeStyleColor ?
           textStrokeStyleColor : ol.render.canvas.defaultStrokeStyle);
       if (!this.textStrokeState_) {
         this.textStrokeState_ = {

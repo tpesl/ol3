@@ -6,6 +6,7 @@ goog.provide('ol.render.canvas.Immediate');
 
 goog.require('ol');
 goog.require('ol.array');
+goog.require('ol.color');
 goog.require('ol.colorlike');
 goog.require('ol.extent');
 goog.require('ol.geom.GeometryType');
@@ -840,7 +841,7 @@ ol.render.canvas.Immediate.prototype.setFillStrokeStyle = function(fillStyle, st
           strokeStyleWidth : ol.render.canvas.defaultLineWidth),
       miterLimit: strokeStyleMiterLimit !== undefined ?
           strokeStyleMiterLimit : ol.render.canvas.defaultMiterLimit,
-      strokeStyle: ol.colorlike.asColorLike(strokeStyleColor ?
+      strokeStyle: ol.color.asString(strokeStyleColor ?
           strokeStyleColor : ol.render.canvas.defaultStrokeStyle)
     };
   }
@@ -920,7 +921,7 @@ ol.render.canvas.Immediate.prototype.setTextStyle = function(textStyle) {
             textStrokeStyleWidth : ol.render.canvas.defaultLineWidth,
         miterLimit: textStrokeStyleMiterLimit !== undefined ?
             textStrokeStyleMiterLimit : ol.render.canvas.defaultMiterLimit,
-        strokeStyle: ol.colorlike.asColorLike(textStrokeStyleColor ?
+        strokeStyle: ol.color.asString(textStrokeStyleColor ?
             textStrokeStyleColor : ol.render.canvas.defaultStrokeStyle)
       };
     }

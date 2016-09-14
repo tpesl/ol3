@@ -1,5 +1,7 @@
 goog.provide('ol.style.Stroke');
 
+goog.require('ol.color');
+
 
 /**
  * @classdesc
@@ -18,7 +20,7 @@ ol.style.Stroke = function(opt_options) {
 
   /**
    * @private
-   * @type {ol.Color|ol.ColorLike}
+   * @type {ol.Color|string}
    */
   this.color_ = options.color !== undefined ? options.color : null;
 
@@ -80,7 +82,7 @@ ol.style.Stroke.prototype.clone = function() {
 
 /**
  * Get the stroke color.
- * @return {ol.Color|ol.ColorLike} Color.
+ * @return {ol.Color|string} Color.
  * @api
  */
 ol.style.Stroke.prototype.getColor = function() {
@@ -141,7 +143,7 @@ ol.style.Stroke.prototype.getWidth = function() {
 /**
  * Set the color.
  *
- * @param {ol.Color|ol.ColorLike} color Color.
+ * @param {ol.Color|string} color Color.
  * @api
  */
 ol.style.Stroke.prototype.setColor = function(color) {
@@ -221,17 +223,9 @@ ol.style.Stroke.prototype.setWidth = function(width) {
  */
 ol.style.Stroke.prototype.getChecksum = function() {
   if (this.checksum_ === undefined) {
-    this.checksum_ = 's';
-    if (this.color_) {
-      if (typeof this.color_ === 'string') {
-        this.checksum_ += this.color_;
-      } else {
-        this.checksum_ += ol.getUid(this.color_).toString();
-      }
-    } else {
-      this.checksum_ += '-';
-    }
-    this.checksum_ += ',' +
+    this.checksum_ = 's' +
+        (this.color_ ?
+            ol.color.asString(this.color_) : '-') + ',' +
         (this.lineCap_ !== undefined ?
             this.lineCap_.toString() : '-') + ',' +
         (this.lineDash_ ?

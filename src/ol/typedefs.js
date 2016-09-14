@@ -75,7 +75,7 @@ ol.CanvasFunctionType;
  *            lineJoin: string,
  *            lineWidth: number,
  *            miterLimit: number,
- *            strokeStyle: ol.ColorLike}}
+ *            strokeStyle: string}}
  */
 ol.CanvasStrokeState;
 
@@ -95,7 +95,7 @@ ol.CenterConstraintType;
 
 
 /**
- * @typedef {{strokeStyle: (ol.ColorLike|undefined), strokeWidth: number,
+ * @typedef {{strokeStyle: (string|undefined), strokeWidth: number,
  *   size: number, lineDash: Array.<number>}}
  */
 ol.CircleRenderOptions;
@@ -112,8 +112,7 @@ ol.Color;
 
 
 /**
- * A type accepted by CanvasRenderingContext2D.fillStyle
- * or CanvasRenderingContext2D.strokeStyle.
+ * A type accepted by CanvasRenderingContext2D.fillStyle.
  * Represents a color, pattern, or gradient.
  *
  * @typedef {string|CanvasPattern|CanvasGradient}
@@ -406,7 +405,7 @@ ol.RasterOperation;
 
 /**
  * @typedef {{
- *   strokeStyle: (ol.ColorLike|undefined),
+ *   strokeStyle: (string|undefined),
  *   strokeWidth: number,
  *   size: number,
  *   lineCap: string,
